@@ -59,14 +59,16 @@
         }
       }
 
+      // 利用 模板生成一个需要被渲染的 HTML 标签（真正在页面中显示的 标签）
       let generateNode = tempNode.cloneNode(true); // 注意：这个是 DOM 元素，可以这么用
-      console.dir(tempNode);
+      // console.dir(tempNode);
+      // 将 '坑' 替换掉
       complier(generateNode, data);
-      console.dir(generateNode);
+      // console.dir(generateNode);
       // 我们此时是没有生成新的 template，所以这里可以看到的，是直接在页面中就更新的数据，因为DOM是引用类型
       // 这样做，模板就没有了，解决办法，将tempNode拷贝一份
 
-      // 4. 放到页面中
+      // 4. 将渲染好的 HTML 加到页面中
       app.parentNode.replaceChild(generateNode, app);
 
       /* 
